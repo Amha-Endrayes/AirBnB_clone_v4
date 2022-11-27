@@ -9,7 +9,6 @@ from os import environ
 from flask import Flask, render_template
 import uuid
 
-
 # Flask Configration
 app = Flask(__name__)
 app.url_map.strict_slashes = False
@@ -25,7 +24,7 @@ def close_db(error):
     storage.close()
 
 
-@app.route('/1-hbnb')
+@app.route('/3-hbnb', strict_slashes=False)
 def hbnb():
     """
     Handels request from states, cites and amenitites
@@ -43,9 +42,10 @@ def hbnb():
 
     places = storage.all(Place).values()
     places = sorted(places, key=lambda k: k.name)
+
     users = dict([user.id, "{} {}".format(user.first_name, user.last_name)]
                  for user in storage.all('User').values())
-    return render_template('1-hbnb.html',
+    return render_template('3-hbnb.html',
                            states=st_ct,
                            amenities=amenities,
                            places=places,
