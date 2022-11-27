@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" console """
+""" console app module that runs a simple console to control the backend by simple command line user interfece"""
 
 import cmd
 from datetime import datetime
